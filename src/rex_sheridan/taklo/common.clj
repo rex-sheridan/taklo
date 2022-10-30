@@ -9,7 +9,8 @@
                      json-write-fn endpoint-url api-key api-token]
               :or {endpoint-url "https://api.trello.com/1/"
                    http-request-fn identity
-                   response-handler-fn identity}}]
+                   response-handler-fn identity
+                   json-write-fn identity}}]
   (def endpoint endpoint-url)
   (def http-request http-request-fn)
   (def http-response-handler response-handler-fn)

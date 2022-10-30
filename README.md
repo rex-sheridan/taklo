@@ -14,7 +14,24 @@ https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
 - Show how to make it async if someone wants
 - Show how to replace the request function
 - Add pagination
-
+- Hookup to GitHub actions for builds
+- Decide test strategy for this library
+  - Use property based testing 
+  - Paths are built correctly
+  - Init overrides are respected
+  - Library requires no dependencies
+  - clj-http compatible requests
+  - Default implementations use identity functions
+  - Default implementations only build request maps
+  - Requests always contain api key and api token
+  - Request methods are one of (:get :post :put :delete)
+  - Request methods are always populated
+  - Endpoint URL is always populated
+  - Some requests will contain body but most won't
+  - GET and DELETE requests never contain body
+  - Paths never contain `:`
+  - API function invocations will call custom http-request overrides
+  - API function invocations that require a JSON body will attempt to serialize the body as JSON and expect a seq
 
 ## Usage
 
@@ -167,6 +184,17 @@ Create Reaction for Action
 Get Action's Reaction
 Delete Action's Reaction
 List Action's summary of Reactions
+
+## CustomFields
+
+Create a new Custom Field on a Board
+Get a Custom Field
+Update a Custom Field definition
+Delete a Custom Field definition
+Get Options of Custom Field drop down
+Add Option to Custom Field dropdown
+Get Option of Custom Field dropdown
+Delete Option of Custom Field dropdown
 
 ## License
 
