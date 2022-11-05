@@ -24,7 +24,7 @@
 (defn get-members-actions [member-id & [opts]]
   (request :get (path member-id :actions) opts))
 
-(defn get-members-custom-board-backgrounds [member-id & [opts]]
+(defn get-members-board-backgrounds [member-id & [opts]]
   (request :get (path member-id :boardBackgrounds) opts))
 
 (defn upload-new-board-background-for-member [member-id file]
