@@ -137,6 +137,112 @@ Batch Requests
 - Disable a Power-Up on a Board
 - Get Power-Ups on a Board ✅
 
+
+### Cards
+
+- Create a new Card
+- Get a Card
+- Update a Card
+- Delete a Card
+- Get a field on a Card
+- Get Actions on a Card
+- Get Attachments on a Card
+- Create Attachment On Card
+- Get an Attachment on a Card
+- Delete an Attachment on a Card
+- Get the Board the Card is on
+- Get checkItems on a Card
+- Get Checklists on a Card
+- Create Checklist on a Card
+- Get checkItem on a Card
+- Update a checkItem on a Card
+- Delete checkItem on a Card
+- Get the List of a Card
+- Get the Members of a Card
+- Get Members who have voted on a Card
+- Add Member vote to Card
+- Get pluginData on a Card
+- Get Stickers on a Card
+- Add a Sticker to a Card
+- Get a Sticker on a Card
+- Update a Sticker on a Card
+- Delete a Sticker on a Card
+- Update Comment Action on a Card
+- Delete a comment on a Card
+- Update Custom Field item on Card
+- Get Custom Field Items for a Card
+- Add a new comment to a Card
+- Add a Label to a Card
+- Add a Member to a Card
+- Create a new Label on a Card
+- Mark a Card's Notifications as read
+- Remove a Label from a Card
+- Remove a Member from a Card
+- Remove a Member's Vote on a Card
+- Update Checkitem on Checklist on Card
+- Delete a Checklist on a Card
+
+### Checklists
+
+Create a Checklist
+Get a Checklist
+Update a Checklist
+Delete a Checklist
+Get field on a Checklist
+Update field on a Checklist
+Get the Board the Checklist is on
+Get the Card a Checklist is on
+Get Checkitems on a Checklist
+Create Checkitem on Checklist
+Get a Checkitem on a Checklist
+Delete Checkitem from Checklist
+
+## CustomFields
+
+Create a new Custom Field on a Board
+Get a Custom Field
+Update a Custom Field definition
+Delete a Custom Field definition
+Get Options of Custom Field drop down
+Add Option to Custom Field dropdown
+Get Option of Custom Field dropdown
+Delete Option of Custom Field dropdown
+
+### Emoji
+
+List available Emoji
+
+### Enterprises
+
+
+Get an Enterprise
+Get auditlog data for an Enterprise
+Get Enterprise admin Members
+Get signupUrl for Enterprise
+Get Members of Enterprise
+Get a Member of Enterprise
+Get whether an organization can be transferred to an enterprise.
+Get a bulk list of organizations that can be transferred to an enterprise.
+Decline enterpriseJoinRequests from one organization or a bulk list of organizations.
+Get ClaimableOrganizations of an Enterprise
+Get PendingOrganizations of an Enterprise
+Create an auth Token for an Enterprise.
+Transfer an Organization to an Enterprise.
+Update a Member's licensed status
+Deactivate a Member of an Enterprise.
+Update Member to be admin of Enterprise
+Remove a Member as admin from Enterprise.
+Delete an Organization from an Enterprise.
+Bulk accept a set of organizations to an Enterprise.
+
+### Labels
+
+Get a Label
+Update a Label
+Delete a Label
+Update a field on a label
+Create a Label
+
 ### Lists
 
 - Get a List ✅
@@ -194,70 +300,7 @@ Get Member's Tokens
 Create Avatar for Member
 Dismiss a message for Member
 
-### Cards
-
-- Create a new Card
-- Get a Card
-- Update a Card
-- Delete a Card
-- Get a field on a Card
-- Get Actions on a Card
-- Get Attachments on a Card
-- Create Attachment On Card
-- Get an Attachment on a Card
-- Delete an Attachment on a Card
-- Get the Board the Card is on
-- Get checkItems on a Card
-- Get Checklists on a Card
-- Create Checklist on a Card
-- Get checkItem on a Card
-- Update a checkItem on a Card
-- Delete checkItem on a Card
-- Get the List of a Card
-- Get the Members of a Card
-- Get Members who have voted on a Card
-- Add Member vote to Card
-- Get pluginData on a Card
-- Get Stickers on a Card
-- Add a Sticker to a Card
-- Get a Sticker on a Card
-- Update a Sticker on a Card
-- Delete a Sticker on a Card
-- Update Comment Action on a Card
-- Delete a comment on a Card
-- Update Custom Field item on Card
-- Get Custom Field Items for a Card
-- Add a new comment to a Card
-- Add a Label to a Card
-- Add a Member to a Card
-- Create a new Label on a Card
-- Mark a Card's Notifications as read
-- Remove a Label from a Card
-- Remove a Member from a Card
-- Remove a Member's Vote on a Card
-- Update Checkitem on Checklist on Card
-- Delete a Checklist on a Card
-
-## CustomFields
-
-Create a new Custom Field on a Board
-Get a Custom Field
-Update a Custom Field definition
-Delete a Custom Field definition
-Get Options of Custom Field drop down
-Add Option to Custom Field dropdown
-Get Option of Custom Field dropdown
-Delete Option of Custom Field dropdown
-
-## Labels
-
-Get a Label
-Update a Label
-Delete a Label
-Update a field on a label
-Create a Label
-
-## Notifications
+### Notifications
 
 Get a Notification
 Update a Notification's read status
@@ -271,10 +314,16 @@ Get the Member a Notification is about (not the creator)
 Get the Member who created the Notification
 Get a Notification's associated Organization
 
-## Search
+### Organizations
+
+### Plugins
+
+### Search
 
 Search Trello
 Search for Members
+
+### Webhooks
 
 ## License
 
