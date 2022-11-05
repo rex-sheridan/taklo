@@ -40,7 +40,8 @@
   ([method path body params]
    (let [req (merge-with into
                          standard-request
-                         {:method method :url (endpoint-url path)}
+                         {:method method 
+                          :url (endpoint-url path)}
                          {:query-params params}
                          (if (seq body)
                            {:content-type :json

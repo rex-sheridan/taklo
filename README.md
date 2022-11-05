@@ -32,6 +32,8 @@ https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
   - Paths never contain `:`
   - API function invocations will call custom http-request overrides
   - API function invocations that require a JSON body will attempt to serialize the body as JSON and expect a seq
+  - Adopt multimethods or protocols to allow for Open/Closed principle and Liskov substitution principle
+  
 
 ## Usage
 
@@ -66,6 +68,33 @@ variables (requires the `ci` task be run first):
 Your library will be deployed to net.clojars.rex-sheridan/taklo on clojars.org by default.
 
 ## API Implemented
+
+## Actions
+
+Get an Action
+Update an Action
+Delete an Action
+Get a specific field on an Action
+Get the Board for an Action
+Get the Card for an Action
+Get the List for an Action
+Get the Member of an Action
+Get the Member Creator of an Action
+Get the Organization of an Action
+Update a Comment Action
+Get Action's Reactions
+Create Reaction for Action
+Get Action's Reaction
+Delete Action's Reaction
+List Action's summary of Reactions
+
+### Applications
+
+Get Application's compliance data
+
+### Batch
+
+Batch Requests
 
 ### Boards
 
@@ -122,6 +151,49 @@ Your library will be deployed to net.clojars.rex-sheridan/taklo on clojars.org b
 - Get the Board a List is on ✅
 - Get Cards in a List ✅
 
+### Members
+
+Get a Member
+Update a Member
+Get a field on a Member
+Get a Member's Actions
+Get Member's custom Board backgrounds
+Upload new boardBackground for Member
+Get a boardBackground of a Member
+Update a Member's custom Board background
+Delete a Member's custom Board background
+Get a Member's boardStars
+Create Star for Board
+Get a boardStar of Member
+Update the position of a boardStar of Member
+Delete Star for Board
+Get Boards that Member belongs to
+Get Boards the Member has been invited to
+Get Cards the Member is on
+Get a Member's custom Board Backgrounds
+Create a new custom Board Background
+Get custom Board Background of Member
+Update custom Board Background of Member
+Delete custom Board Background of Member
+Get a Member's customEmojis
+Create custom Emoji for Member
+Get a Member's custom Emoji
+Get Member's custom Stickers
+Create custom Sticker for Member
+Get a Member's custom Sticker
+Delete a Member's custom Sticker
+Get Member's Notifications
+Get Member's Organizations
+Get Organizations a Member has been invited to
+Get Member's saved searched
+Create saved Search for Member
+Get a saved search
+Update a saved search
+Delete a saved search
+Get Member's Tokens
+Create Avatar for Member
+Dismiss a message for Member
+
 ### Cards
 
 - Create a new Card
@@ -166,25 +238,6 @@ Your library will be deployed to net.clojars.rex-sheridan/taklo on clojars.org b
 - Update Checkitem on Checklist on Card
 - Delete a Checklist on a Card
 
-## Actions
-
-Get an Action
-Update an Action
-Delete an Action
-Get a specific field on an Action
-Get the Board for an Action
-Get the Card for an Action
-Get the List for an Action
-Get the Member of an Action
-Get the Member Creator of an Action
-Get the Organization of an Action
-Update a Comment Action
-Get Action's Reactions
-Create Reaction for Action
-Get Action's Reaction
-Delete Action's Reaction
-List Action's summary of Reactions
-
 ## CustomFields
 
 Create a new Custom Field on a Board
@@ -195,6 +248,33 @@ Get Options of Custom Field drop down
 Add Option to Custom Field dropdown
 Get Option of Custom Field dropdown
 Delete Option of Custom Field dropdown
+
+## Labels
+
+Get a Label
+Update a Label
+Delete a Label
+Update a field on a label
+Create a Label
+
+## Notifications
+
+Get a Notification
+Update a Notification's read status
+Get a field of a Notification
+Mark all Notifications as read
+Update Notification's read status
+Get the Board a Notification is on
+Get the Card a Notification is on
+Get the List a Notification is on
+Get the Member a Notification is about (not the creator)
+Get the Member who created the Notification
+Get a Notification's associated Organization
+
+## Search
+
+Search Trello
+Search for Members
 
 ## License
 

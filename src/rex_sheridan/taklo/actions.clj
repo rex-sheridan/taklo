@@ -49,4 +49,4 @@
   (request :delete (path action-id :reactions reaction-id)))
 
 (defn list-actions-summary-of-reactions [action-id] 
-  (request :method (path action-id :reactionsSummary)))
+  (request :get (path action-id :reactionsSummary)))
