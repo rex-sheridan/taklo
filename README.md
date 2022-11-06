@@ -33,6 +33,9 @@ https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
   - API function invocations will call custom http-request overrides
   - API function invocations that require a JSON body will attempt to serialize the body as JSON and expect a seq
   - Adopt multimethods or protocols to allow for Open/Closed principle and Liskov substitution principle
+  - Use babashka to make it command-line scriptable
+  - Use graalvm-native to make command-line binary
+  - Add simple text ui
   
 
 ## Usage
@@ -315,6 +318,33 @@ Get the Member who created the Notification
 Get a Notification's associated Organization
 
 ### Organizations
+
+Create a new Organization
+Get an Organization
+Update an Organization
+Delete an Organization
+Get field on Organization
+Get Actions for Organization
+Get Boards in an Organization
+Retrieve Organization's Exports
+Create Export for Organizations
+Get the Members of an Organization
+Update an Organization's Members
+Get Memberships of an Organization
+Get a Membership of an Organization
+Get the pluginData Scoped to Organization
+Get Tags of an Organization
+Create a Tag in Organization
+Update a Member of an Organization
+Remove a Member from an Organization
+Deactivate or reactivate a member of an Organization
+Update logo for an Organization
+Delete Logo for Organization
+Remove a Member from an Organization and all Organization Boards
+Remove the associated Google Apps domain from a Workspace
+Delete the email domain restriction on who can be invited to the Workspace
+Delete an Organization's Tag
+Get Organizations new billable guests
 
 ### Plugins
 

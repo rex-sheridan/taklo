@@ -1,4 +1,5 @@
 (ns rex-sheridan.taklo.boards
+  "https://developer.atlassian.com/cloud/trello/rest/api-group-boards"
     (:require [rex-sheridan.taklo.common :refer [request with-path-prefix]]))
 
 (def ^:private path (partial with-path-prefix :boards))
