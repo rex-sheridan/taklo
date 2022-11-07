@@ -4,7 +4,7 @@
 
 (def ^:private path (partial with-path-prefix :webhooks))
 
-(defn create-webhook [webhook-id callback-url model-id & [opts]]
+(defn create-webhook [callback-url model-id & [opts]]
   (request :post "webhooks" (merge {:callbackURL callback-url
                                     :idModel model-id} opts)))
 
