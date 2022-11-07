@@ -2,7 +2,9 @@
 
 Trello => Taco : Taklo <= Clojure
 
-Taklo is a Clojure wrapper around the Trello REST API.
+Taklo is a purely functional Clojure library for building requests to the Trello REST API. The requests are in the format used by clj-http so just as long as you use a similar HTTP client implementation you can plug it in easily. The library provides a user the ability to customize the stubbed out request processing flow with their own logic. This provides the user flexibility in how they want to use the library. 
+
+The library uses almost no dependencies out of the box. Instead, it's designed for extension. There is a default implementation that uses clj-http and org.clojure/data.json located at [TODO](). It's designed to show you how you can customize the implementation but is also useful on its own.
 
 https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
 
