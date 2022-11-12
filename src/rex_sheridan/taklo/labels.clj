@@ -1,4 +1,5 @@
 (ns rex-sheridan.taklo.labels
+  "https://developer.atlassian.com/cloud/trello/rest/api-group-labels"
   (:require [rex-sheridan.taklo.common :refer [request with-path-prefix]]))
 
 (def ^:private path (partial with-path-prefix :labels))

@@ -1,5 +1,6 @@
 (ns rex-sheridan.taklo.cards
-   (:require [rex-sheridan.taklo.common :refer [request with-path-prefix]]))
+  "https://developer.atlassian.com/cloud/trello/rest/api-group-cards"
+   (:require [rex-sheridan.taklo.common :refer [request with-path-prefix standard-request]]))
 
 (def ^:private path (partial with-path-prefix :cards))
 
@@ -29,6 +30,16 @@
 (defn create-attachment-on-card [card-id file & [opts]] 
   (request :post (path card-id :attachments) {} opts
            {:multipart [{:name "file" :content file}]}))
+
+(defn download-attachment 
+  "See https://community.developer.atlassian.com/t/update-authenticated-access-to-s3/43681 
+   for details on downloading requiring Authorization header."
+  [attachment & [opts]]
+  (request (merge standard-request
+                  opts
+                  {:method :get
+                   :url (:url attachment)
+                   :accept "*/*"})))
 
 (defn get-attachment-on-card [card-id attachment-id & [opts]] 
   (request :get (path card-id :attachments attachment-id) opts))

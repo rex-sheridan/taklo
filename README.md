@@ -15,7 +15,7 @@ https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
 - Show how to replace dependency libraries
 - Show how to make it async if someone wants
 - Show how to replace the request function
-- Add pagination
+- Add client authorization flows support https://developer.atlassian.com/cloud/trello/guides/rest-api/authorization/#authorizing-a-client
 - Hookup to GitHub actions for builds
 - Decide test strategy for this library
   - Use property based testing 
@@ -34,10 +34,9 @@ https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
   - Paths never contain `:`
   - API function invocations will call custom http-request overrides
   - API function invocations that require a JSON body will attempt to serialize the body as JSON and expect a seq
-  - Adopt multimethods or protocols to allow for Open/Closed principle and Liskov substitution principle
-  - Use babashka to make it command-line scriptable
-  - Use graalvm-native to make command-line binary
-  - Add simple text ui
+- Use babashka to make it command-line scriptable
+- Use graalvm-native to make command-line binary
+- Add simple text ui
   
 
 ## Usage
