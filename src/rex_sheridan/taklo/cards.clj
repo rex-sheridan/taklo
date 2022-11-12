@@ -22,44 +22,14 @@
   (request :get (path card-id :actions) opts))
 
 (defn get-attachments-on-card [card-id fields filter & [opts]] 
-  (request :get (path card-id :attachments) (merge {:fields fields
-                                                        :filter filter} opts)))
+  (request :get (path card-id :attachments)
+           (merge {:fields fields
+                   :filter filter} opts)))
 
-;; TODO need to attach files as multi-part form data
-;; https://developer.atlassian.com/cloud/trello/rest/api-group-cards/#api-cards-id-attachments-post
-(defn create-attachment-on-card [card-id & [opts]] 
-  (request :post (path card-id :attachments) opts))
+(defn create-attachment-on-card [card-id file & [opts]] 
+  (request :post (path card-id :attachments) {} opts
+           {:multipart [{:name "file" :content file}]}))
 
-#_(
-   
-
-;; Multipart form uploads/posts
-;; takes a vector of maps, to preserve the order of entities, :name
-;; will be used as the part name unless :part-name is specified
-(client/post "http://example.org" {:multipart [{:name "title" :content "My Awesome Picture"}
-                                               {:name "Content/type" :content "image/jpeg"}
-                                               {:name "foo.txt" :part-name "eggplant" :content "Eggplants"}
-                                               {:name "file" :content (clojure.java.io/file "pic.jpg")}]
-                                   ;; You can also optionally pass a :mime-subtype
-                                   :mime-subtype "foo"})
-
-;; Multipart :content values can be one of the following:
-;; String, InputStream, File, a byte-array, or an instance of org.apache.http.entity.mime.content.ContentBody
-;; Some Multipart bodies can also support more keys (like :encoding
-;; and :mime-type), check src/clj-http/multipart.clj to see all flags
-
-;; Apache's http client automatically retries on IOExceptions, if you
-;; would like to handle these retries yourself, you can specify a
-;; :retry-handler. Return true to retry, false to stop trying:
-(client/post "http://example.org" {:multipart [["title" "Foo"]
-                                               ["Content/type" "text/plain"]
-                                               ["file" (clojure.java.io/file "/tmp/missing-file")]]
-                                   :retry-handler (fn [ex try-count http-context]
-                                                    (println "Got:" ex)
-                                                    (if (> try-count 4) false true))})
-
-)
-;; TODO Validate downloading attachments works
 (defn get-attachment-on-card [card-id attachment-id & [opts]] 
   (request :get (path card-id :attachments attachment-id) opts))
 
