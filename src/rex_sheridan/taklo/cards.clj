@@ -33,7 +33,7 @@
 
 (defn download-attachment 
   "See https://community.developer.atlassian.com/t/update-authenticated-access-to-s3/43681 
-   for details on downloading requiring Authorization header."
+   for details on downloading requiring Authorization header instead of passing as query params."
   [attachment & [opts]]
   (request (merge standard-request
                   opts
@@ -135,7 +135,7 @@
   (request :post (path card-id :labels)
            (merge {:color color} opts)))
 
-(defn mark-card-s-notifications-as-read [card-id] 
+(defn mark-cards-notifications-as-read [card-id] 
   (request :post (path card-id :markAssociatedNotificationsRead)))
 
 (defn remove-label-from-card [card-id label-id] 
