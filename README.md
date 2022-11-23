@@ -2,11 +2,27 @@
 
 Trello => Taco : Taklo <= Clojure
 
-Taklo is a purely functional Clojure library for building requests to the Trello REST API. The requests are in the format used by clj-http so just as long as you use a similar HTTP client implementation you can plug it in easily. The library provides a user the ability to customize the stubbed out request processing flow with their own logic. This provides the user flexibility in how they want to use the library. 
+Taklo is a purely functional Clojure library for building requests to the Trello REST API. The requests are in the format used by `clj-http` so just as long as you use a similar HTTP client implementation you can plug it in easily. The library provides a user the ability to customize the stubbed out request processing flow with their own logic. This provides the user flexibility in how they want to use the library.
 
-The library uses almost no dependencies out of the box. Instead, it's designed for extension. There is a default implementation that uses clj-http and org.clojure/data.json located at [TODO](). It's designed to show you how you can customize the implementation but is also useful on its own.
+The library uses almost no dependencies out of the box. Instead, it's designed for extension. There is a default implementation that uses `clj-http` and `org.clojure/data.json` located at [taklo-defaults](https://github.com/rex-sheridan/taklo-defaults). It's designed to show you how you can customize the implementation but is also useful on its own.
 
-https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/
+Many of the functions in this library have additional optional arguments. You can refer to the Trello API documentation for the list of available optional arguments for a given API method. If the function supports optional arguments it expects them as a map. Some functions do not support optional arguments.
+
+Almost all functions in the library return a map which can be fed into an `clj-http` client. Here's an example:
+
+```clojure
+{:headers
+    {"Authorization"
+    "OAuth oauth_consumer_key=\"api-key\", oauth_token=\"api-token\""},
+    :accept :json,
+    :debug false,
+    :debug-body true,
+    :method :get,
+    :url "https://api.trello.com/1/boards/board-id",
+    :query-params {:foo "bar"}}
+```
+
+See [Trello's REST API Introduction](https://developer.atlassian.com/cloud/trello/guides/rest-api/api-introduction/) for more details.
 
 ## TODOs
 
