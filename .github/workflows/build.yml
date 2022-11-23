@@ -1,5 +1,5 @@
 name: Build taklo
-run-name: ${{ github.actor }} has initiated build
+run-name: ${{ github.actor }} push caused build taklo
 on: [push]
 jobs:
   build:
