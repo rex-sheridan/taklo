@@ -8,6 +8,8 @@
   [api-key api-token]
   {"Authorization" (str "OAuth oauth_consumer_key=\"" api-key "\", oauth_token=\"" api-token "\"")})
 
+(def default-endpoint-url "https://api.trello.com/1/")
+
 ;; TODO: implement two modes. 
 ;; 1. static single initialization for the global level
 ;; 2. dynamic rebinding or higher order functions 
@@ -16,7 +18,7 @@
 (defn init! [{:keys [http-request-fn response-handler-fn
                      json-write-fn endpoint-url api-key api-token
                      debug]
-              :or {endpoint-url "https://api.trello.com/1/"
+              :or {endpoint-url default-endpoint-url
                    http-request-fn identity
                    response-handler-fn identity
                    json-write-fn identity

@@ -27,4 +27,3 @@ jobs:
 
       - name: Package Clojure project
         run: clojure -T:build ci
-
