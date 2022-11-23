@@ -6,9 +6,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Cache Clojure Dependencies
+        uses: actions/cache@v3
         with:
-          node-version: '14'
-      - run: npm install -g bats
-      - run: bats -v
-      
+          path:
+            - ~/.m2
+            - ~/.gitlibs
+          key: cache-${{ hashFiles('**/deps.edn') }}
+      - name: Prepare java
+        uses: actions/setup-java@v3.5.1
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Install clojure tools
+        uses: DeLaGuardo/setup-clojure@10.1
+        with:
+          cli: 'latest'   # Clojure CLI based on tools.deps
+      - name: Run Unit tests
+        run: clojure -T:build test
+
+      - name: Package Clojure project
+        run: clojure -T:build ci
+
