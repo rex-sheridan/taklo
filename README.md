@@ -1,5 +1,7 @@
 # taklo
 
+[![Build taklo](https://github.com/rex-sheridan/taklo/actions/workflows/build.yml/badge.svg)](https://github.com/rex-sheridan/taklo/actions/workflows/build.yml)
+
 Trello => Taco : Taklo <= Clojure
 
 Taklo is a purely functional Clojure library for building requests to the Trello REST API. The requests are in the format used by `clj-http` so just as long as you use a similar HTTP client implementation you can plug it in easily. The library provides a user the ability to customize the stubbed out request processing flow with their own logic. This provides the user flexibility in how they want to use the library.
