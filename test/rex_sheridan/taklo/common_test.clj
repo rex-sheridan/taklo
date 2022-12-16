@@ -1,5 +1,5 @@
 (ns rex-sheridan.taklo.common-test
-   (:require [clojure.test :refer :all]
+   (:require [clojure.test :refer [deftest is use-fixtures testing]]
              [rex-sheridan.taklo.common :refer :all]))
 
 (use-fixtures :once (fn [f]
@@ -25,6 +25,6 @@
 (deftest endpoint-test
   (testing "Context of the test assertions" 
       (let [path "path"]
-        (binding [rex-sheridan.taklo.common/endpoint "rebound endpoint"]
+        (binding [rex-sheridan.taklo.common/*endpoint* "rebound endpoint"]
           (is (not= (str default-endpoint-url path) (endpoint-url "path"))))
         (is (= (str default-endpoint-url path) (endpoint-url "path"))))))

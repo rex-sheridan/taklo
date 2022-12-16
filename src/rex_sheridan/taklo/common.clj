@@ -28,7 +28,7 @@
   (def ^:dynamic *http-response-handler* response-handler-fn)
   (def ^:dynamic *json-write* json-write-fn)
 
-  (def ^:dynamic standard-request {:headers (create-authorization api-key api-token)
+  (def ^:dynamic *standard-request* {:headers (create-authorization api-key api-token)
                          :accept :json
                          :debug debug
                          :debug-body true}))
@@ -50,7 +50,7 @@
   ([method path body params request-base]
    (request (merge-with into
                         request-base
-                        standard-request
+                        *standard-request*
                         {:method method
                          :url (endpoint-url path)}
                         {:query-params params}

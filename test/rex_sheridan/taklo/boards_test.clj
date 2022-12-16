@@ -1,7 +1,7 @@
 (ns rex-sheridan.taklo.boards-test
-   (:require [clojure.test :refer :all]
+   (:require [clojure.test :refer [deftest is use-fixtures]]
              [rex-sheridan.taklo.common :refer [init!]]
-             [rex-sheridan.taklo.boards :refer :all]))
+             [rex-sheridan.taklo.boards :refer [get-board]]))
 
 (def api-key "api-key")
 (def api-token "api-token")
