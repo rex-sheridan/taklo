@@ -14,7 +14,7 @@
 ;; 1. static single initialization for the global level
 ;; 2. dynamic rebinding or higher order functions 
 ;;    https://stackoverflow.com/questions/11730828/clojure-and-dynamic
-#_{:clj-kondo/ignore [:inline-def :dynamic-var-not-earmuffed]}
+#_{:clj-kondo/ignore [:inline-def]}
 (defn init! [{:keys [http-request-fn response-handler-fn
                      json-write-fn endpoint-url api-key api-token
                      debug]
@@ -23,10 +23,10 @@
                    response-handler-fn identity
                    json-write-fn identity
                    debug false}}]
-  (def ^:dynamic endpoint endpoint-url)
-  (def ^:dynamic http-request http-request-fn)
-  (def ^:dynamic http-response-handler response-handler-fn)
-  (def ^:dynamic json-write json-write-fn)
+  (def ^:dynamic *endpoint* endpoint-url)
+  (def ^:dynamic *http-request* http-request-fn)
+  (def ^:dynamic *http-response-handler* response-handler-fn)
+  (def ^:dynamic *json-write* json-write-fn)
 
   (def ^:dynamic standard-request {:headers (create-authorization api-key api-token)
                          :accept :json
@@ -40,10 +40,10 @@
        (join "/")
        (apply str)))
 
-(defn endpoint-url [path] (str endpoint path))
+(defn endpoint-url [path] (str *endpoint* path))
 
 (defn request
-  ([req] (-> (http-request req) http-response-handler))
+  ([req] (-> (*http-request* req) *http-response-handler*))
   ([method path] (request method path {} {}))
   ([method path params] (request method path {} params))
   ([method path body params] (request method path body params {}))
@@ -56,5 +56,5 @@
                         {:query-params params}
                         (if (seq body)
                           {:content-type :json
-                           :body (json-write body)}
+                           :body (*json-write* body)}
                           {})))))
