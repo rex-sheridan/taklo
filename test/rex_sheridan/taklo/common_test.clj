@@ -1,6 +1,10 @@
 (ns rex-sheridan.taklo.common-test
    (:require [clojure.test :refer [deftest is use-fixtures testing]]
-             [rex-sheridan.taklo.common :refer :all]))
+             [rex-sheridan.taklo.common :refer [create-authorization
+                                                default-endpoint-url 
+                                                endpoint-url 
+                                                init! 
+                                                with-path-prefix]]))
 
 (use-fixtures :once (fn [f]
                       (init! {})
