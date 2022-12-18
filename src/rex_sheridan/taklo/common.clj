@@ -24,7 +24,7 @@
                    json-write-fn identity
                    debug false}}]
   (def ^:dynamic *endpoint* endpoint-url)
-  (def ^:dynamic *http-request* http-request-fn)
+  (def ^:dynamic *http-request-handler* http-request-fn)
   (def ^:dynamic *http-response-handler* response-handler-fn)
   (def ^:dynamic *json-write* json-write-fn)
 
@@ -43,7 +43,7 @@
 (defn endpoint-url [path] (str *endpoint* path))
 
 (defn request
-  ([req] (-> (*http-request* req) *http-response-handler*))
+  ([req] (-> req *http-request-handler* *http-response-handler*))
   ([method path] (request method path {} {}))
   ([method path params] (request method path {} params))
   ([method path body params] (request method path body params {}))
