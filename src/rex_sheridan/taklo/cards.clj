@@ -4,8 +4,8 @@
 
 (def ^:private path (partial with-path-prefix :cards))
 
-(defn create-new-card [id-list & [opts]]
-  (request :post "cards" (merge {:idList id-list} opts)))
+(defn create-new-card [list-id & [opts]]
+  (request :post "cards" (merge {:idList list-id} opts)))
 
 (defn get-card [card-id & [opts]] 
   (request :get (path card-id) opts))

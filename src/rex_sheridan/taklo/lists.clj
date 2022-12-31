@@ -26,7 +26,9 @@
 (defn archive-list [list-id closed]
   (request :put (path list-id :closed) {:value closed}))
 
-(defn get-cards-by-list [list-id & [opts]]
+(defn get-cards-by-list 
+  "https://developer.atlassian.com/cloud/trello/rest/api-group-lists/#api-lists-id-cards-get"
+  [list-id & [opts]]
   (request :get (path list-id :cards) opts))
 
 (defn move-list-to-board [list-id board-id]
