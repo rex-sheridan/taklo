@@ -42,12 +42,20 @@
 
 (defn endpoint-url [path] (str *endpoint* path))
 
+(defn- initialized? []
+  (bound? #'*endpoint* 
+          #'*http-request-handler* 
+          #'*http-response-handler* 
+          #'*json-write*
+          #'*standard-request*))
+
 (defn request
   ([req] (-> req *http-request-handler* *http-response-handler*))
   ([method path] (request method path {} {}))
   ([method path params] (request method path {} params))
   ([method path body params] (request method path body params {}))
   ([method path body params request-base]
+   {:pre [(initialized?)]}
    (request (merge-with into
                         request-base
                         *standard-request*
