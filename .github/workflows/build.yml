@@ -24,8 +24,3 @@ jobs:
           cli: 'latest'   # Clojure CLI based on tools.deps
       - name: Test and build Clojure project
         run: clojure -T:build ci
-      - name: Deploy to Clojars
-        env:
-          CLOJARS_USERNAME: ${{ secrets.CLOJARS_USERNAME }}
-          CLOJARS_PASSWORD: ${{ secrets.CLOJARS_PASSWORD }}
-        run: clojure -T:build ci
