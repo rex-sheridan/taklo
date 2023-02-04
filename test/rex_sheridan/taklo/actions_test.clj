@@ -12,7 +12,7 @@
    {"Authorization" "OAuth oauth_consumer_key=\"\", oauth_token=\"\""},
    :accept :json,
    :debug false,
-   :debug-body true,
+   :debug-body false,
    :method :get,
    :url "https://api.trello.com/1/actions/action-id",
    :query-params nil})

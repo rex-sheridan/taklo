@@ -20,7 +20,7 @@
            "OAuth oauth_consumer_key=\"api-key\", oauth_token=\"api-token\""},
           :accept :json,
           :debug false,
-          :debug-body true,
+          :debug-body false,
           :method :get,
           :url "https://api.trello.com/1/boards/board-id",
           :query-params {:foo "bar"}}))))

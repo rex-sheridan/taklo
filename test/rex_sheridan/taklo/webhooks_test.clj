@@ -8,7 +8,6 @@
                       (init! {})
                       (f)))
 
-
 (deftest create-webhook-test
   (let [callback-url "callback-url"
         model-id "model-id"]
@@ -16,7 +15,7 @@
             {"Authorization" "OAuth oauth_consumer_key=\"\", oauth_token=\"\""},
             :accept :json,
             :debug false,
-            :debug-body true,
+            :debug-body false,
             :method :post,
             :url "https://api.trello.com/1/webhooks",
             :query-params {:callbackURL callback-url, :idModel model-id}}
