@@ -10,11 +10,22 @@
 
 (def default-endpoint-url "https://api.trello.com/1/")
 
+(declare ^:dynamic *endpoint*)
+(declare ^:dynamic *http-request-handler*)
+(declare ^:dynamic *http-response-handler*)
+(declare ^:dynamic *json-write*)
+
+(def ^:dynamic *standard-request-options*
+  {:accept :json
+   :debug false
+   :debug-body false})
+
+(declare ^:dynamic *standard-request*)
+
 ;; Allows for two modes:
 ;; 1. static single initialization for the global level
 ;; 2. dynamic rebinding or higher order functions 
 ;;    https://stackoverflow.com/questions/11730828/clojure-and-dynamic
-#_{:clj-kondo/ignore [:inline-def]}
 (defn init! [{:keys [http-request-fn response-handler-fn
                      json-write-fn endpoint-url api-key api-token
                      debug]
@@ -23,15 +34,22 @@
                    response-handler-fn identity
                    json-write-fn identity
                    debug false}}]
-  (def ^:dynamic *endpoint* endpoint-url)
-  (def ^:dynamic *http-request-handler* http-request-fn)
-  (def ^:dynamic *http-response-handler* response-handler-fn)
-  (def ^:dynamic *json-write* json-write-fn)
-
-  (def ^:dynamic *standard-request* {:headers (create-authorization api-key api-token)
-                         :accept :json
-                         :debug debug
-                         :debug-body true}))
+  (alter-var-root #'*endpoint* (constantly endpoint-url))
+  (alter-var-root #'*http-request-handler* (constantly http-request-fn))
+  (alter-var-root #'*http-response-handler* (constantly response-handler-fn))
+  (alter-var-root #'*json-write* (constantly json-write-fn))
+  
+  (alter-var-root #'*standard-request-options*
+                  (constantly
+                   {:accept :json
+                    :debug debug
+                    :debug-body debug}))
+  (alter-var-root #'*standard-request*
+                  (constantly
+                   (fn []
+                     (merge *standard-request-options*
+                            {:headers (create-authorization api-key api-token)}))))
+  :initialized)
 
 (defn with-path-prefix [prefix id & segments]
   (->> segments
@@ -58,7 +76,7 @@
    {:pre [(initialized?)]}
    (request (merge-with into
                         request-base
-                        *standard-request*
+                        (*standard-request*)
                         {:method method
                          :url (endpoint-url path)}
                         {:query-params params}

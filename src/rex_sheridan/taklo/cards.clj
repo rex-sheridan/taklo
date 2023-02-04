@@ -35,7 +35,7 @@
   "See https://community.developer.atlassian.com/t/update-authenticated-access-to-s3/43681 
    for details on downloading requiring Authorization header instead of passing as query params."
   [attachment & [opts]]
-  (request (merge *standard-request*
+  (request (merge (*standard-request*)
                   opts
                   {:method :get
                    :url (:url attachment)
