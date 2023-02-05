@@ -34,21 +34,23 @@
                    response-handler-fn identity
                    json-write-fn identity
                    debug false}}]
-  (alter-var-root #'*endpoint* (constantly endpoint-url))
-  (alter-var-root #'*http-request-handler* (constantly http-request-fn))
-  (alter-var-root #'*http-response-handler* (constantly response-handler-fn))
-  (alter-var-root #'*json-write* (constantly json-write-fn))
-  
-  (alter-var-root #'*standard-request-options*
-                  (constantly
-                   {:accept :json
-                    :debug debug
-                    :debug-body debug}))
-  (alter-var-root #'*standard-request*
-                  (constantly
-                   (fn []
-                     (merge *standard-request-options*
-                            {:headers (create-authorization api-key api-token)}))))
+  (dorun
+   (for
+    [[v f]
+     (partition
+      2
+      [#'*endpoint* (constantly endpoint-url)
+       #'*http-request-handler* (constantly http-request-fn)
+       #'*http-response-handler* (constantly response-handler-fn)
+       #'*json-write* (constantly json-write-fn)
+       #'*standard-request-options* (constantly
+                                     {:accept :json
+                                      :debug debug
+                                      :debug-body debug})
+       #'*standard-request* (constantly
+                             (fn [] (merge *standard-request-options*
+                                           {:headers (create-authorization api-key api-token)})))])]
+     (alter-var-root v f)))
   :initialized)
 
 (defn with-path-prefix [prefix id & segments]
